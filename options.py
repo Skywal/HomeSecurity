@@ -1,0 +1,2 @@
+
+OUTDOOR_SENSOR_COM_NAME = "dev/ttyACM0"
