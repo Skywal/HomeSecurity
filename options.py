@@ -1,6 +1,10 @@
 
-# OUTDOOR_SENSOR_COM_NAME = "/dev/ttyACM0"
-OUTDOOR_SENSOR_COM_NAME = "COM9"
+OUTDOOR_SENSOR_COM_NAME: str = "/dev/ttyACM0"
+
+
+class BOT_OPTIONS:
+    API_TOKEN: str = 'Your telegram bot token'
+    GROUP_CHAT_ID: int = 100101
 
 
 class RTSP:
