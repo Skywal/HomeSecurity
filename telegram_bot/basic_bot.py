@@ -10,10 +10,10 @@ class CameraBot(Subscriber):
     bot = telebot.TeleBot(BOT_OPTIONS.API_TOKEN)
     camera: Camera
 
-    def __init__(self, camera:Camera) -> None:
+    def __init__(self, camera: Camera) -> None:
 
         CameraBot.camera = camera
-        self.chat_id:int = BOT_OPTIONS.GROUP_CHAT_ID
+        self.chat_id: int = BOT_OPTIONS.GROUP_CHAT_ID
         self.bot_time_delay: float = 0.4
     
     @bot.message_handler(commands=['p'])
@@ -24,7 +24,6 @@ class CameraBot(Subscriber):
         CameraBot.bot.send_photo(message.chat.id, byte_image)
        
         print("---> The photo has been sent")
-
 
     def update(self, context):
         CameraBot.bot.send_message(self.chat_id, "ALARM! SENSOR TRIGGERRED!")
