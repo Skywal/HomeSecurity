@@ -1,9 +1,12 @@
 import time
 import telebot
+from logging import getLogger
 
 from sensors import Subscriber
 from cctv.camera import Camera
 from options import BOT_OPTIONS
+
+log = getLogger(__name__)
 
 
 class CameraBot(Subscriber):
@@ -23,11 +26,12 @@ class CameraBot(Subscriber):
         CameraBot.bot.send_message(message.chat.id, "Photo on demand")
         CameraBot.bot.send_photo(message.chat.id, byte_image)
        
-        print("---> The photo has been sent")
+        log.info("The photo has been sent into char {}".format(message.chat.id))
 
     def update(self, context):
         CameraBot.bot.send_message(self.chat_id, "ALARM! SENSOR TRIGGERRED!")
-        
+        log.info("BOT: SENSOR TRIGGERRED!")
+
         for i in range(5):
             byte_image = CameraBot.make_photo()
 
